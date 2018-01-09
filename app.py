@@ -2,6 +2,7 @@ from flask import Flask, render_template, json, request
 from PIL import Image, ImageDraw, ImageFont
 import os
 import datetime
+import ast
 
 app = Flask(__name__)
 
@@ -28,7 +29,7 @@ def delete_folders():
 
 @app.route('/train', methods=['GET'])
 def train_network():
-    print "entrenando red"
+    os.system('bash ./cnn/run_train.sh')
     return "OK", 200
 
 @app.route('/upload_images', methods=['POST'] )
@@ -55,10 +56,12 @@ def test3():
 def new_image():
   img = Image.open(request.files['inputFile'])
   img.save("./cnn/final.jpg")
-  #os.system('bash ./cnn/run_cnn.sh')
+  os.system('bash ./cnn/run_cnn.sh')
   data  = get_results_classify()
-  ###############
-  print_image(data, "99,99")
+  score = str(data['score']*100)
+  name = data['Dog']
+  pwd = './cnn/training_dataset/'+name+'/'+name+'1.jpg'
+  print_image(pwd,score)
     
   ##############
   return "OK", 201
@@ -72,8 +75,10 @@ def print_image(pwd, prob):
 
 
 def get_results_classify():
-  file_r = "./cnn/final.jpg"
-  return file_r
+  file_results = open("./cnn/results_classify.txt", "r")
+  contenido = file_results.read()
+  array = ast.literal_eval(contenido)
+  return array[0]
 
 if __name__ == "__main__":
     app.run(port=5002)
