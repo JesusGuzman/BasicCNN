@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Saxsa Analytics Predictions</title>
+
+   
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/css/signup.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/train.js"></script>
+    <script src="../static/js/delete.js"></script>
+   
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/">Home</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Naive Bayes with Prediction</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Entrenar modelo</h1>
+        <button type="button" class="btn btn-lg btn-primary btn-block"  id="btnTrain">Entrenar</button>
+        <div id="respuesta"></div>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Reiniciar modelo</h1>
+        <button type="button" class="btn btn-lg btn-primary btn-block"  id="btnDelete">Reiniciar</button>
+        <div id="respuesta1"></div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; Saxsa 2017</p>
+      </footer>
+
+    </div>
+  </body>
+</html>
+
